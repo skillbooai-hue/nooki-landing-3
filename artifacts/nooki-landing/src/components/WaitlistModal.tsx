@@ -45,7 +45,6 @@ export function WaitlistModal() {
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
           <motion.div
             key="backdrop"
             initial={{ opacity: 0 }}
@@ -57,7 +56,6 @@ export function WaitlistModal() {
             data-testid="modal-backdrop"
           />
 
-          {/* Modal */}
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
             <motion.div
               key="modal"
@@ -69,7 +67,6 @@ export function WaitlistModal() {
               onClick={(e) => e.stopPropagation()}
               data-testid="waitlist-modal"
             >
-              {/* Close button */}
               <button
                 onClick={closeModal}
                 className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-800 transition-colors z-10"
@@ -91,9 +88,9 @@ export function WaitlistModal() {
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">You're on the list!</h3>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">You're in!</h3>
                     <p className="text-gray-500 text-base leading-relaxed">
-                      We'll send you early access as soon as Nooki launches on iOS and Android.
+                      Welcome to the Nooki private beta. We'll reach out with early access as soon as we launch in the US.
                     </p>
                     <Button
                       className="mt-7 w-full rounded-full py-6 text-base font-semibold"
@@ -106,11 +103,11 @@ export function WaitlistModal() {
                 ) : (
                   <>
                     <div className="mb-7">
-                      <h2 className="text-2xl font-bold text-gray-900 mb-2" data-testid="modal-title">
-                        Join the Exclusive Beta
+                      <h2 className="text-2xl font-bold text-gray-900 mb-2 leading-tight" data-testid="modal-title">
+                        Experience the Future of Parenting
                       </h2>
                       <p className="text-gray-500 text-base leading-relaxed">
-                        Enter your email to get early access to Nooki for iOS and Android.
+                        Nooki is launching soon in the US. Secure your spot in the private beta.
                       </p>
                     </div>
 
@@ -135,7 +132,7 @@ export function WaitlistModal() {
                     </form>
 
                     <p className="text-center text-xs text-gray-400 mt-5 leading-relaxed">
-                      No spam. Unsubscribe anytime. We'll only reach out about your beta access.
+                      No spam. Unsubscribe anytime. Beta spots are limited.
                     </p>
                   </>
                 )}

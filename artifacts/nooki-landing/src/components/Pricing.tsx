@@ -4,6 +4,22 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { useWaitlist } from "@/context/WaitlistContext";
 
+const basicFeatures = [
+  "15 AI-managed chores/mo",
+  "3 Family Spaces",
+  "Photo Verification",
+  "Earned Screen Time",
+];
+
+const premiumFeatures = [
+  "150 AI-managed chores/mo",
+  "Unlimited Family Spaces",
+  "Bank Integration (Greenlight, Step & more)",
+  "Priority Support",
+  "Photo Verification",
+  "Earned Screen Time",
+];
+
 export function Pricing() {
   const { openModal } = useWaitlist();
 
@@ -43,9 +59,9 @@ export function Pricing() {
               </CardHeader>
               <CardContent className="p-8 pt-4">
                 <ul className="space-y-4">
-                  {["15 AI events/month", "Up to 3 Spaces", "1 External Calendar"].map((feature, i) => (
+                  {basicFeatures.map((feature, i) => (
                     <li key={i} className="flex items-center gap-3">
-                      <div className="bg-primary/10 rounded-full p-1 text-primary">
+                      <div className="bg-primary/10 rounded-full p-1 text-primary flex-shrink-0">
                         <Check size={16} />
                       </div>
                       <span className="text-foreground font-medium">{feature}</span>
@@ -86,9 +102,9 @@ export function Pricing() {
               </CardHeader>
               <CardContent className="p-8 pt-4">
                 <ul className="space-y-4">
-                  {["150 AI events/month", "Up to 10 Spaces", "Unlimited External Calendars", "Photo & Video Chat"].map((feature, i) => (
+                  {premiumFeatures.map((feature, i) => (
                     <li key={i} className="flex items-center gap-3">
-                      <div className="bg-primary/10 rounded-full p-1 text-primary">
+                      <div className="bg-primary/10 rounded-full p-1 text-primary flex-shrink-0">
                         <Check size={16} />
                       </div>
                       <span className="text-foreground font-medium">{feature}</span>

@@ -14,8 +14,11 @@ export function Rewards() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-            Real work earns real rewards.
+            Real chores earn real rewards.
           </h2>
+          <p className="text-xl text-muted-foreground mt-4 max-w-2xl mx-auto">
+            Allowance and screen time tied directly to effort — automatically.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -31,9 +34,9 @@ export function Rewards() {
                 <div className="w-14 h-14 bg-emerald-500/10 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <CreditCard size={28} />
                 </div>
-                <h3 className="text-2xl font-semibold mb-3">Kaspi Kids Integration</h3>
+                <h3 className="text-2xl font-semibold mb-3">Debit Card & Bank Integration</h3>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  Earned coins transfer directly to your child's Kaspi Kids card. Real money, real motivation.
+                  Earned allowance transfers directly to your child's account. Works with Greenlight, Step, or your preferred bank. Real money, real motivation.
                 </p>
               </CardContent>
             </Card>
@@ -53,7 +56,7 @@ export function Rewards() {
                 </div>
                 <h3 className="text-2xl font-semibold mb-3">Earned Screen Time</h3>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  Kids unlock screen time by completing tasks. Nooki manages the balance automatically.
+                  Kids unlock screen time by completing chores. Nooki manages the balance automatically — no more negotiating.
                 </p>
               </CardContent>
             </Card>

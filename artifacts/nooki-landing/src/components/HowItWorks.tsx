@@ -1,24 +1,24 @@
 import { motion } from "framer-motion";
-import { MessageSquare, Bell, Camera } from "lucide-react";
+import { ClipboardList, Bell, Camera } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const steps = [
   {
     num: 1,
-    title: "Speak or Type a Task",
-    description: "Speak or type a task in the Nooki app. AI understands your messy voice messages.",
-    icon: MessageSquare,
+    title: "Assign a Chore",
+    description: "Simply speak or type what needs to be done. Our AI handles the scheduling, reminders, and follow-through automatically.",
+    icon: ClipboardList,
   },
   {
     num: 2,
-    title: "The Digital Thorn",
-    description: "Nooki keeps nudging the child with smart push notifications until the task is completed. Persistent, patient, and relentless.",
+    title: "Automated Follow-ups",
+    description: "Nooki sends smart, persistent notifications to your child's device until the task is started. Patient, relentless, and drama-free.",
     icon: Bell,
   },
   {
     num: 3,
-    title: "Photo-Verification",
-    description: "Nooki requires a photo of the finished task. No photo — no reward. Proof of work, every time.",
+    title: "Photo Verification",
+    description: "Your child submits a photo of the completed work. You approve, they get rewarded. No proof — no allowance.",
     icon: Camera,
   }
 ];
@@ -35,8 +35,11 @@ export function HowItWorks() {
           className="text-center mb-16 md:mb-24"
         >
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
-            Nooki works like a strict, fair digital contract.
+            How Nooki works.
           </h2>
+          <p className="text-xl text-muted-foreground max-w-xl mx-auto">
+            Three simple steps. Zero shouting.
+          </p>
         </motion.div>
 
         <div className="max-w-5xl mx-auto relative">
