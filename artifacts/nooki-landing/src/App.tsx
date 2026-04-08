@@ -12,13 +12,15 @@ const queryClient = new QueryClient();
 function LandingRouter() {
   const hostname = typeof window !== "undefined" ? window.location.hostname : "";
 
-  if (hostname.includes("ru.")) {
+  if (hostname === "ru.yesnooki.com") {
     return <CalendarRuLanding />;
-  } else if (hostname.includes("a.")) {
-    return <AIParentingLanding />;
-  } else {
-    return <CalendarEnLanding />;
   }
+
+  if (hostname === "a.yesnooki.com") {
+    return <AIParentingLanding />;
+  }
+
+  return <CalendarEnLanding />;
 }
 
 function App() {

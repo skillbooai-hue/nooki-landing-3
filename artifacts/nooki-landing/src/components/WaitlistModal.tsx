@@ -17,7 +17,6 @@ export function WaitlistModal() {
       }, 300);
       return () => clearTimeout(t);
     }
-    return undefined;
   }, [isOpen]);
 
   useEffect(() => {
