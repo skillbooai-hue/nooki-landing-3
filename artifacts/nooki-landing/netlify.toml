@@ -1,0 +1,8 @@
+[build]
+  command = "pnpm --filter @workspace/nooki-landing run build"
+  publish = "artifacts/nooki-landing/dist/public"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

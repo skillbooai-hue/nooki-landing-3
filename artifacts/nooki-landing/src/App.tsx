@@ -9,14 +9,22 @@ import { CalendarRuLanding } from "@/pages/CalendarRuLanding";
 
 const queryClient = new QueryClient();
 
-function LandingRouter() {
-  const hostname = typeof window !== "undefined" ? window.location.hostname : "";
+function getSubdomain(): string {
+  if (typeof window === "undefined") return "";
+  const hostname = window.location.hostname;
+  const parts = hostname.split(".");
+  if (parts.length >= 3) return parts[0].toLowerCase();
+  return "";
+}
 
-  if (hostname === "ru.yesnooki.com") {
+function LandingRouter() {
+  const subdomain = getSubdomain();
+
+  if (subdomain === "ru") {
     return <CalendarRuLanding />;
   }
 
-  if (hostname === "a.yesnooki.com") {
+  if (subdomain === "a") {
     return <AIParentingLanding />;
   }
 
