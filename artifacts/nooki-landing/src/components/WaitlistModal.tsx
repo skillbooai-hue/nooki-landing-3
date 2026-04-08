@@ -10,13 +10,12 @@ export function WaitlistModal() {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    if (!isOpen) {
-      const t = setTimeout(() => {
-        setEmail("");
-        setSubmitted(false);
-      }, 300);
-      return () => clearTimeout(t);
-    }
+    if (isOpen) return;
+    const t = setTimeout(() => {
+      setEmail("");
+      setSubmitted(false);
+    }, 300);
+    return () => clearTimeout(t);
   }, [isOpen]);
 
   useEffect(() => {
