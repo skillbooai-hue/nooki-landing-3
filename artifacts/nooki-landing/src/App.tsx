@@ -9,26 +9,16 @@ import { CalendarRuLanding } from "@/pages/CalendarRuLanding";
 
 const queryClient = new QueryClient();
 
-function getSubdomain(): string {
-  if (typeof window === "undefined") return "";
-  const hostname = window.location.hostname;
-  const parts = hostname.split(".");
-  if (parts.length >= 3) return parts[0].toLowerCase();
-  return "";
-}
-
 function LandingRouter() {
-  const subdomain = getSubdomain();
+  const hostname = typeof window !== "undefined" ? window.location.hostname : "";
 
-  if (subdomain === "ru") {
+  if (hostname.includes("ru.")) {
     return <CalendarRuLanding />;
-  }
-
-  if (subdomain === "a") {
+  } else if (hostname.includes("a.")) {
     return <AIParentingLanding />;
+  } else {
+    return <CalendarEnLanding />;
   }
-
-  return <CalendarEnLanding />;
 }
 
 function App() {
