@@ -1,4 +1,3 @@
-import { SiTelegram } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 
 export function FooterCTA() {
@@ -19,11 +18,10 @@ export function FooterCTA() {
             
             <Button 
               size="lg" 
-              className="rounded-full px-8 py-7 text-lg bg-white text-primary hover:bg-gray-50 shadow-xl gap-3 w-full sm:w-auto transition-transform hover:scale-105"
+              className="rounded-full px-8 py-7 text-lg bg-white text-primary hover:bg-gray-50 shadow-xl w-full sm:w-auto transition-transform hover:scale-105"
               data-testid="footer-cta"
             >
-              <SiTelegram className="text-xl" />
-              Start in Telegram for Free
+              Join the Waitlist
             </Button>
           </div>
         </div>

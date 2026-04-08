@@ -9,19 +9,19 @@ import {
 const faqs = [
   {
     question: "Is my child's data safe?",
-    answer: "Nooki only reads messages sent directly to the bot. We never access your main Telegram chats, store personal conversations, or share data with third parties. All data is encrypted.",
+    answer: "Nooki only processes messages and tasks sent directly through the app. We never store personal conversations or share data with third parties. All data is encrypted in transit and at rest.",
   },
   {
-    question: "Does this require a separate app?",
-    answer: "No downloads, no new apps. Nooki lives entirely in Telegram, which your family already uses. Setup takes about 2 minutes.",
+    question: "Is Nooki available on iOS and Android?",
+    answer: "We are currently preparing for our beta launch. Join the waitlist to get early access for both Apple and Android devices.",
   },
   {
     question: "How is Nooki different from Family Link?",
     answer: "Family Link blocks apps and creates power struggles. Nooki uses incentives — tasks earn rewards, creating positive habits instead of resentment. No locks, no fights.",
   },
   {
-    question: "What if my child doesn't have Telegram?",
-    answer: "Setting up a Telegram account is free and takes 2 minutes. Nooki can manage tasks for multiple children under one parent account.",
+    question: "Does this require any special setup?",
+    answer: "Setup takes about 2 minutes. Download the app, create a family space, and add your children. Nooki handles the rest — no complicated configuration needed.",
   }
 ];
 
@@ -46,6 +46,7 @@ export function FAQ() {
                 key={i} 
                 value={`item-${i}`}
                 className="bg-card px-6 py-2 rounded-2xl border border-border/50 shadow-sm"
+                data-testid={`faq-item-${i}`}
               >
                 <AccordionTrigger className="text-lg font-medium hover:no-underline text-left">
                   {faq.question}

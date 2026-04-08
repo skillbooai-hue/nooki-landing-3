@@ -6,13 +6,13 @@ const steps = [
   {
     num: 1,
     title: "Speak or Type a Task",
-    description: "Tell Nooki what needs to be done in Telegram. Voice messages, typed instructions — AI understands it all.",
+    description: "Speak or type a task in the Nooki app. AI understands your messy voice messages.",
     icon: MessageSquare,
   },
   {
     num: 2,
     title: "The Digital Thorn",
-    description: "Nooki keeps nudging the child with Telegram notifications until the task is completed. Persistent, patient, and relentless.",
+    description: "Nooki keeps nudging the child with smart push notifications until the task is completed. Persistent, patient, and relentless.",
     icon: Bell,
   },
   {

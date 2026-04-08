@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
-import { SiTelegram } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 
@@ -53,7 +52,7 @@ export function Pricing() {
               </CardContent>
               <CardFooter className="p-8 pt-0">
                 <Button variant="outline" className="w-full rounded-full py-6 text-base" data-testid="pricing-basic-btn">
-                  Start Free in Telegram
+                  Join the Waitlist
                 </Button>
               </CardFooter>
             </Card>
