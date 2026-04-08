@@ -1,4 +1,3 @@
-import { WaitlistProvider } from "@/context/WaitlistContext";
 import { WaitlistModal } from "@/components/WaitlistModal";
 import { NavBar } from "@/components/NavBar";
 import { Hero } from "@/components/Hero";
@@ -11,20 +10,18 @@ import { FooterCTA } from "@/components/FooterCTA";
 
 export function AIParentingLanding() {
   return (
-    <WaitlistProvider>
-      <div className="min-h-screen bg-background font-sans selection:bg-primary/20">
-        <NavBar />
-        <main>
-          <Hero />
-          <Problem />
-          <HowItWorks />
-          <Rewards />
-          <Pricing />
-          <FAQ />
-        </main>
-        <FooterCTA />
-        <WaitlistModal />
-      </div>
-    </WaitlistProvider>
+    <div className="min-h-screen bg-background font-sans selection:bg-primary/20">
+      <NavBar />
+      <main>
+        <Hero />
+        <Problem />
+        <HowItWorks />
+        <Rewards />
+        <Pricing />
+        <FAQ />
+      </main>
+      <FooterCTA />
+      <WaitlistModal />
+    </div>
   );
 }

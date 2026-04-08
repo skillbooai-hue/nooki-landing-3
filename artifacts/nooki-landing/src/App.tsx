@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
+import { WaitlistProvider } from "@/context/WaitlistContext";
 import { AIParentingLanding } from "@/components/AIParentingLanding";
 import { EnglishCalendar } from "@/components/EnglishCalendar";
 import { RussianCalendar } from "@/components/RussianCalendar";
@@ -27,8 +28,10 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <RootComponent />
-        <Toaster />
+        <WaitlistProvider>
+          <RootComponent />
+          <Toaster />
+        </WaitlistProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );
