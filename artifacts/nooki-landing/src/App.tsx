@@ -4,7 +4,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 
-// Components
+import { WaitlistProvider } from "@/context/WaitlistContext";
+import { WaitlistModal } from "@/components/WaitlistModal";
 import { NavBar } from "@/components/NavBar";
 import { Hero } from "@/components/Hero";
 import { Problem } from "@/components/Problem";
@@ -29,6 +30,7 @@ function LandingPage() {
         <FAQ />
       </main>
       <FooterCTA />
+      <WaitlistModal />
     </div>
   );
 }
@@ -46,10 +48,12 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-          <Router />
-        </WouterRouter>
-        <Toaster />
+        <WaitlistProvider>
+          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+            <Router />
+          </WouterRouter>
+          <Toaster />
+        </WaitlistProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );

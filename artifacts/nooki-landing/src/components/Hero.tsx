@@ -1,16 +1,16 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { useWaitlist } from "@/context/WaitlistContext";
 
-function AppStoreBadge() {
+function AppStoreBadge({ onClick }: { onClick: () => void }) {
   return (
-    <a
-      href="#"
+    <button
+      onClick={onClick}
       aria-label="Download on the App Store"
       data-testid="badge-app-store"
-      className="inline-block transition-opacity hover:opacity-80 active:opacity-60"
+      className="inline-block transition-opacity hover:opacity-80 active:opacity-60 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded-lg"
     >
-      <svg width="135" height="40" viewBox="0 0 135 40" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="App Store">
+      <svg width="135" height="40" viewBox="0 0 135 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="App Store">
         <rect width="135" height="40" rx="8" fill="#000"/>
         <text x="38" y="14" fill="white" fontSize="8" fontFamily="Inter, -apple-system, sans-serif" fontWeight="400">Download on the</text>
         <text x="38" y="28" fill="white" fontSize="14" fontFamily="Inter, -apple-system, sans-serif" fontWeight="600">App Store</text>
@@ -19,19 +19,19 @@ function AppStoreBadge() {
           <path d="M18.7 13.4C18.7 10.1 21.3 8.6 21.4 8.5C19.8 6.2 17.3 5.9 16.4 5.9C14.3 5.7 12.3 7.1 11.2 7.1C10.1 7.1 8.4 5.9 6.7 5.9C4.4 5.9 2.2 7.2 1 9.3C-1.4 13.5 0.4 19.7 2.7 23.1C3.9 24.8 5.3 26.7 7.1 26.6C8.9 26.5 9.5 25.5 11.6 25.5C13.7 25.5 14.2 26.6 16.2 26.6C18.1 26.6 19.3 24.9 20.5 23.2C21.8 21.2 22.4 19.3 22.4 19.2C22.4 19.2 18.7 17.8 18.7 13.4Z" fill="white"/>
         </g>
       </svg>
-    </a>
+    </button>
   );
 }
 
-function GooglePlayBadge() {
+function GooglePlayBadge({ onClick }: { onClick: () => void }) {
   return (
-    <a
-      href="#"
+    <button
+      onClick={onClick}
       aria-label="Get it on Google Play"
       data-testid="badge-google-play"
-      className="inline-block transition-opacity hover:opacity-80 active:opacity-60"
+      className="inline-block transition-opacity hover:opacity-80 active:opacity-60 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded-lg"
     >
-      <svg width="135" height="40" viewBox="0 0 135 40" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Google Play">
+      <svg width="135" height="40" viewBox="0 0 135 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Google Play">
         <rect width="135" height="40" rx="8" fill="#000"/>
         <text x="38" y="14" fill="white" fontSize="8" fontFamily="Inter, -apple-system, sans-serif" fontWeight="400">GET IT ON</text>
         <text x="38" y="28" fill="white" fontSize="14" fontFamily="Inter, -apple-system, sans-serif" fontWeight="600">Google Play</text>
@@ -60,20 +60,12 @@ function GooglePlayBadge() {
           </defs>
         </g>
       </svg>
-    </a>
+    </button>
   );
 }
 
 export function Hero() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (email.trim()) {
-      setSubmitted(true);
-    }
-  }
+  const { openModal } = useWaitlist();
 
   return (
     <section className="relative overflow-hidden pt-24 pb-32 md:pt-36 md:pb-40">
@@ -104,45 +96,19 @@ export function Hero() {
             The AI parenting app that manages your child's chores. No more shouting, no more screen-time battles. Nooki demands photo-proofs and rewards results.
           </p>
 
-          <div className="flex flex-col items-center gap-5 w-full max-w-lg">
-            {submitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="w-full bg-primary/10 border border-primary/20 rounded-2xl px-6 py-5 text-primary font-semibold text-base"
-                data-testid="hero-waitlist-success"
-              >
-                You're on the list! We'll be in touch soon.
-              </motion.div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="flex flex-col sm:flex-row gap-3 w-full"
-                data-testid="hero-waitlist-form"
-              >
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
-                  className="flex-1 rounded-full border border-border bg-background px-5 py-3.5 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 shadow-sm"
-                  data-testid="hero-email-input"
-                />
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="rounded-full px-7 py-3.5 text-base font-semibold shadow-lg hover:shadow-primary/25 transition-all whitespace-nowrap"
-                  data-testid="hero-waitlist-btn"
-                >
-                  Join the Waitlist
-                </Button>
-              </form>
-            )}
+          <div className="flex flex-col items-center gap-5">
+            <Button
+              size="lg"
+              onClick={openModal}
+              className="rounded-full px-10 py-6 text-lg font-semibold shadow-xl hover:shadow-primary/25 transition-all"
+              data-testid="hero-waitlist-btn"
+            >
+              Join the Waitlist
+            </Button>
 
             <div className="flex items-center gap-3 flex-wrap justify-center">
-              <AppStoreBadge />
-              <GooglePlayBadge />
+              <AppStoreBadge onClick={openModal} />
+              <GooglePlayBadge onClick={openModal} />
             </div>
 
             <p className="text-sm text-muted-foreground/80 font-medium">

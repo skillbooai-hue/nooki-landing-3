@@ -1,9 +1,16 @@
 import { useState } from "react";
 import { Menu, X, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useWaitlist } from "@/context/WaitlistContext";
 
 export function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { openModal } = useWaitlist();
+
+  function handleCTA() {
+    setIsOpen(false);
+    openModal();
+  }
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-xl border-b border-border/40">
@@ -16,7 +23,8 @@ export function NavBar() {
         </div>
 
         <div className="hidden md:flex items-center">
-          <Button 
+          <Button
+            onClick={handleCTA}
             className="rounded-full px-6 font-medium shadow-sm hover:shadow-md transition-all"
             data-testid="nav-cta-desktop"
           >
@@ -25,9 +33,9 @@ export function NavBar() {
         </div>
 
         <div className="md:hidden flex items-center">
-          <Button 
-            variant="ghost" 
-            size="icon" 
+          <Button
+            variant="ghost"
+            size="icon"
             onClick={() => setIsOpen(!isOpen)}
             data-testid="nav-mobile-menu"
           >
@@ -38,7 +46,7 @@ export function NavBar() {
 
       {isOpen && (
         <div className="md:hidden p-4 bg-background border-b border-border shadow-lg absolute w-full left-0 top-16">
-          <Button className="w-full rounded-full" data-testid="nav-cta-mobile">
+          <Button className="w-full rounded-full" onClick={handleCTA} data-testid="nav-cta-mobile">
             Join the Waitlist
           </Button>
         </div>

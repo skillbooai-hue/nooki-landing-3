@@ -2,12 +2,15 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { useWaitlist } from "@/context/WaitlistContext";
 
 export function Pricing() {
+  const { openModal } = useWaitlist();
+
   return (
     <section className="py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -51,7 +54,12 @@ export function Pricing() {
                 </ul>
               </CardContent>
               <CardFooter className="p-8 pt-0">
-                <Button variant="outline" className="w-full rounded-full py-6 text-base" data-testid="pricing-basic-btn">
+                <Button
+                  variant="outline"
+                  className="w-full rounded-full py-6 text-base"
+                  onClick={openModal}
+                  data-testid="pricing-basic-btn"
+                >
                   Join the Waitlist
                 </Button>
               </CardFooter>
@@ -89,8 +97,12 @@ export function Pricing() {
                 </ul>
               </CardContent>
               <CardFooter className="p-8 pt-0">
-                <Button className="w-full rounded-full py-6 text-base shadow-lg shadow-primary/25" data-testid="pricing-premium-btn">
-                  Upgrade to Premium
+                <Button
+                  className="w-full rounded-full py-6 text-base shadow-lg shadow-primary/25"
+                  onClick={openModal}
+                  data-testid="pricing-premium-btn"
+                >
+                  Join the Waitlist
                 </Button>
               </CardFooter>
             </Card>
