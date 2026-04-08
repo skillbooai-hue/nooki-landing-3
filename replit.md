@@ -16,6 +16,23 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - **API codegen**: Orval (from OpenAPI spec)
 - **Build**: esbuild (CJS bundle)
 
+## Artifacts
+
+### Nooki Landing Page (`artifacts/nooki-landing`)
+- **Preview path**: `/` (root)
+- **Type**: react-vite (static, frontend-only)
+- **Purpose**: High-converting landing page for the Nooki AI parenting bot
+- **Stack**: React + Tailwind CSS + Framer Motion
+- **Sections**: Nav, Hero, Problem (3 pain-point cards), How It Works (3-step flow), Rewards & Gamification, Pricing (Free + $4.99/mo), FAQ (accordion), Footer CTA
+- **Fonts**: Inter (Google Fonts)
+- **Icons**: Lucide React + React Icons (SiTelegram)
+- **Components**: `src/components/` — NavBar, Hero, Problem, HowItWorks, Rewards, Pricing, FAQ, FooterCTA
+- **Theme**: Apple/Japanese Minimalism — near-white bg, #3B82F6 primary blue, 1rem radius
+
+### API Server (`artifacts/api-server`)
+- **Type**: Express 5 API
+- **Preview path**: `/api`
+
 ## Key Commands
 
 - `pnpm run typecheck` — full typecheck across all packages
