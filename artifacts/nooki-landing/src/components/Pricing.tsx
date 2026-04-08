@@ -3,7 +3,6 @@ import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { useWaitlist } from "@/context/WaitlistContext";
-import { trackWaitlistClick } from "@/lib/analytics";
 
 const basicFeatures = [
   "15 AI-managed chores/mo",
@@ -23,11 +22,6 @@ const premiumFeatures = [
 
 export function Pricing() {
   const { openModal } = useWaitlist();
-
-  function handleCTA() {
-    trackWaitlistClick();
-    openModal();
-  }
 
   return (
     <section className="py-24 bg-background">
@@ -79,7 +73,7 @@ export function Pricing() {
                 <Button
                   variant="outline"
                   className="w-full rounded-full py-6 text-base"
-                  onClick={handleCTA}
+                  onClick={openModal}
                   data-testid="pricing-basic-btn"
                 >
                   Join the Waitlist
@@ -121,7 +115,7 @@ export function Pricing() {
               <CardFooter className="p-8 pt-0">
                 <Button
                   className="w-full rounded-full py-6 text-base shadow-lg shadow-primary/25"
-                  onClick={handleCTA}
+                  onClick={openModal}
                   data-testid="pricing-premium-btn"
                 >
                   Join the Waitlist

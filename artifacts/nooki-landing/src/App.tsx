@@ -13,16 +13,13 @@ function LandingRouter() {
   const hostname = typeof window !== "undefined" ? window.location.hostname : "";
 
   if (hostname === "ru.yesnooki.com") {
-    document.title = "Nooki - Японский календарь (RU)";
     return <CalendarRuLanding />;
   }
 
   if (hostname === "a.yesnooki.com") {
-    document.title = "Nooki - AI Parenting (US)";
     return <AIParentingLanding />;
   }
 
-  document.title = "Nooki - AI Calendar (EN)";
   return <CalendarEnLanding />;
 }
 

@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useWaitlist } from "@/context/WaitlistContext";
-import { trackWaitlistClick } from "@/lib/analytics";
 
 function AppStoreBadge({ onClick }: { onClick: () => void }) {
   return (
@@ -68,11 +67,6 @@ function GooglePlayBadge({ onClick }: { onClick: () => void }) {
 export function Hero() {
   const { openModal } = useWaitlist();
 
-  function handleCTA() {
-    trackWaitlistClick();
-    openModal();
-  }
-
   return (
     <section className="relative overflow-hidden pt-24 pb-32 md:pt-36 md:pb-40">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
@@ -105,7 +99,7 @@ export function Hero() {
           <div className="flex flex-col items-center gap-5">
             <Button
               size="lg"
-              onClick={handleCTA}
+              onClick={openModal}
               className="rounded-full px-10 py-6 text-lg font-semibold shadow-xl hover:shadow-primary/25 transition-all"
               data-testid="hero-waitlist-btn"
             >
@@ -113,8 +107,8 @@ export function Hero() {
             </Button>
 
             <div className="flex items-center gap-3 flex-wrap justify-center">
-              <AppStoreBadge onClick={handleCTA} />
-              <GooglePlayBadge onClick={handleCTA} />
+              <AppStoreBadge onClick={openModal} />
+              <GooglePlayBadge onClick={openModal} />
             </div>
 
             <p className="text-sm text-muted-foreground/80 font-medium">

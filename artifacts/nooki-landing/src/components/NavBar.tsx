@@ -2,14 +2,12 @@ import { useState } from "react";
 import { Menu, X, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useWaitlist } from "@/context/WaitlistContext";
-import { trackWaitlistClick } from "@/lib/analytics";
 
 export function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const { openModal } = useWaitlist();
 
   function handleCTA() {
-    trackWaitlistClick();
     setIsOpen(false);
     openModal();
   }

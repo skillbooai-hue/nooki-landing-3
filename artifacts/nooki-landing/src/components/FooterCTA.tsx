@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { useWaitlist } from "@/context/WaitlistContext";
-import { trackWaitlistClick } from "@/lib/analytics";
 
 export function FooterCTA() {
   const { openModal } = useWaitlist();
@@ -22,7 +21,7 @@ export function FooterCTA() {
 
             <Button
               size="lg"
-              onClick={() => { trackWaitlistClick(); openModal(); }}
+              onClick={openModal}
               className="rounded-full px-8 py-7 text-lg bg-white text-primary hover:bg-gray-50 shadow-xl w-full sm:w-auto transition-transform hover:scale-105"
               data-testid="footer-cta"
             >
