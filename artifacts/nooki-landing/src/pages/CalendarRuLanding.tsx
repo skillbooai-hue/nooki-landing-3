@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useWaitlist } from "@/context/WaitlistContext";
 import { WaitlistModal } from "@/components/WaitlistModal";
+import { trackWaitlistClick } from "@/lib/analytics";
 
 const features = [
   {
@@ -71,6 +72,11 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
 export function CalendarRuLanding() {
   const { openModal } = useWaitlist();
 
+  function handleCTA() {
+    trackWaitlistClick();
+    openModal();
+  }
+
   return (
     <div className="min-h-screen bg-background font-sans selection:bg-primary/20">
       {/* NavBar */}
@@ -82,7 +88,7 @@ export function CalendarRuLanding() {
           </div>
           <Button
             className="rounded-full px-5"
-            onClick={openModal}
+            onClick={handleCTA}
             data-testid="nav-waitlist-btn"
           >
             Записаться в список
@@ -133,7 +139,7 @@ export function CalendarRuLanding() {
               <Button
                 size="lg"
                 className="rounded-full px-10 py-7 text-lg font-semibold shadow-xl shadow-primary/25"
-                onClick={openModal}
+                onClick={handleCTA}
                 data-testid="hero-waitlist-btn"
               >
                 Записаться в список ожидания
@@ -145,10 +151,10 @@ export function CalendarRuLanding() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="flex items-center justify-center gap-6 mt-8"
             >
-              <button onClick={openModal} data-testid="hero-appstore-btn" aria-label="App Store">
+              <button onClick={handleCTA} data-testid="hero-appstore-btn" aria-label="App Store">
                 <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Загрузить в App Store" className="h-10" />
               </button>
-              <button onClick={openModal} data-testid="hero-googleplay-btn" aria-label="Google Play">
+              <button onClick={handleCTA} data-testid="hero-googleplay-btn" aria-label="Google Play">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Скачать в Google Play" className="h-10" />
               </button>
             </motion.div>
@@ -232,7 +238,7 @@ export function CalendarRuLanding() {
                         </li>
                       ))}
                     </ul>
-                    <Button variant="outline" className="w-full rounded-full py-6" onClick={openModal} data-testid="pricing-basic-btn">
+                    <Button variant="outline" className="w-full rounded-full py-6" onClick={handleCTA} data-testid="pricing-basic-btn">
                       Записаться в список
                     </Button>
                   </CardContent>
@@ -263,7 +269,7 @@ export function CalendarRuLanding() {
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full rounded-full py-6 shadow-lg shadow-primary/25" onClick={openModal} data-testid="pricing-premium-btn">
+                    <Button className="w-full rounded-full py-6 shadow-lg shadow-primary/25" onClick={handleCTA} data-testid="pricing-premium-btn">
                       Записаться в список
                     </Button>
                   </CardContent>
@@ -311,7 +317,7 @@ export function CalendarRuLanding() {
               size="lg"
               variant="secondary"
               className="rounded-full px-10 py-7 text-base font-semibold"
-              onClick={openModal}
+              onClick={handleCTA}
               data-testid="footer-waitlist-btn"
             >
               Записаться в список
