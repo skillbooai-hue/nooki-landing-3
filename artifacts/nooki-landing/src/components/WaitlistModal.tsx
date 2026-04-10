@@ -8,12 +8,16 @@ export function WaitlistModal() {
   const { isOpen, closeModal } = useWaitlist();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (!isOpen) {
       const t = setTimeout(() => {
         setEmail("");
         setSubmitted(false);
+        setLoading(false);
+        setError("");
       }, 300);
       return () => clearTimeout(t);
     }
@@ -37,9 +41,32 @@ export function WaitlistModal() {
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (email.trim()) setSubmitted(true);
+    if (!email.trim()) return;
+    setLoading(true);
+    setError("");
+    try {
+      const body = new URLSearchParams({
+        "form-name": "waitlist",
+        email: email.trim(),
+        source: "assistant_promo",
+      }).toString();
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -123,12 +150,16 @@ export function WaitlistModal() {
                         data-testid="modal-email-input"
                         autoFocus
                       />
+                      {error && (
+                        <p className="text-red-500 text-sm mb-3 text-center">{error}</p>
+                      )}
                       <Button
                         type="submit"
-                        className="w-full rounded-full py-6 text-base font-semibold shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-shadow"
+                        disabled={loading}
+                        className="w-full rounded-full py-6 text-base font-semibold shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-shadow disabled:opacity-60"
                         data-testid="modal-submit-btn"
                       >
-                        Join Now
+                        {loading ? "Submitting…" : "Join Now"}
                       </Button>
                     </form>
 
