@@ -21,7 +21,7 @@ export function FooterCTA() {
 
             <Button
               size="lg"
-              onClick={openModal}
+              onClick={() => openModal()}
               className="rounded-full px-8 py-7 text-lg bg-white text-primary hover:bg-gray-50 shadow-xl w-full sm:w-auto transition-transform hover:scale-105"
               data-testid="footer-cta"
             >

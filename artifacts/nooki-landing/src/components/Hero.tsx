@@ -99,7 +99,7 @@ export function Hero() {
           <div className="flex flex-col items-center gap-5">
             <Button
               size="lg"
-              onClick={openModal}
+              onClick={() => openModal()}
               className="rounded-full px-10 py-6 text-lg font-semibold shadow-xl hover:shadow-primary/25 transition-all"
               data-testid="hero-waitlist-btn"
             >
@@ -107,8 +107,8 @@ export function Hero() {
             </Button>
 
             <div className="flex items-center gap-3 flex-wrap justify-center">
-              <AppStoreBadge onClick={openModal} />
-              <GooglePlayBadge onClick={openModal} />
+              <AppStoreBadge onClick={() => openModal()} />
+              <GooglePlayBadge onClick={() => openModal()} />
             </div>
 
             <p className="text-sm text-muted-foreground/80 font-medium">
