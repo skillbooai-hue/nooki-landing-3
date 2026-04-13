@@ -19,7 +19,7 @@ export function NavBar() {
           <div className="bg-primary/10 p-1.5 rounded-lg text-primary">
             <Smartphone size={24} />
           </div>
-          <span className="font-bold text-xl tracking-tight">Nooki</span>
+          <span className="font-bold text-xl tracking-tight text-primary">Nooki</span>
         </div>
 
         <div className="hidden md:flex items-center">
