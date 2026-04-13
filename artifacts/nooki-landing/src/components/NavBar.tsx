@@ -3,6 +3,8 @@ import { Menu, X, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useWaitlist } from "@/context/WaitlistContext";
 
+const PRICING_MESSAGE = "Pricing will be announced soon. Join the waitlist for an exclusive early-bird discount.";
+
 export function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const { openModal } = useWaitlist();
@@ -10,6 +12,11 @@ export function NavBar() {
   function handleCTA() {
     setIsOpen(false);
     openModal();
+  }
+
+  function handlePricing() {
+    setIsOpen(false);
+    openModal(PRICING_MESSAGE);
   }
 
   return (
@@ -22,7 +29,14 @@ export function NavBar() {
           <span className="font-bold text-xl tracking-tight text-primary">Nooki</span>
         </div>
 
-        <div className="hidden md:flex items-center">
+        <div className="hidden md:flex items-center gap-2">
+          <button
+            onClick={handlePricing}
+            className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            data-testid="nav-pricing-link"
+          >
+            Pricing
+          </button>
           <Button
             onClick={handleCTA}
             className="rounded-full px-6 font-medium shadow-sm hover:shadow-md transition-all"
@@ -45,7 +59,14 @@ export function NavBar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden p-4 bg-background border-b border-border shadow-lg absolute w-full left-0 top-16">
+        <div className="md:hidden p-4 bg-background border-b border-border shadow-lg absolute w-full left-0 top-16 space-y-2">
+          <button
+            onClick={handlePricing}
+            className="w-full py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors text-center"
+            data-testid="nav-pricing-link-mobile"
+          >
+            Pricing
+          </button>
           <Button className="w-full rounded-full" onClick={handleCTA} data-testid="nav-cta-mobile">
             Join the Waitlist
           </Button>

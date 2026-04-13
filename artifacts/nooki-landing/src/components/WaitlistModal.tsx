@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useWaitlist } from "@/context/WaitlistContext";
 
 export function WaitlistModal() {
-  const { isOpen, closeModal } = useWaitlist();
+  const { isOpen, closeModal, modalMessage } = useWaitlist();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -134,9 +134,15 @@ export function WaitlistModal() {
                       <h2 className="text-2xl font-bold text-gray-900 mb-2 leading-tight" data-testid="modal-title">
                         Experience the Future of Parenting
                       </h2>
-                      <p className="text-gray-500 text-base leading-relaxed">
-                        Nooki is launching soon in the US. Secure your spot in the private beta.
-                      </p>
+                      {modalMessage ? (
+                        <p className="text-primary font-medium text-sm leading-relaxed bg-primary/8 rounded-xl px-4 py-3">
+                          {modalMessage}
+                        </p>
+                      ) : (
+                        <p className="text-gray-500 text-base leading-relaxed">
+                          Nooki is launching soon in the US. Secure your spot in the private beta.
+                        </p>
+                      )}
                     </div>
 
                     <form onSubmit={handleSubmit} data-testid="modal-form">

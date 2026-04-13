@@ -2,7 +2,8 @@ import { createContext, useContext, useState } from "react";
 
 interface WaitlistContextValue {
   isOpen: boolean;
-  openModal: () => void;
+  modalMessage: string;
+  openModal: (message?: string) => void;
   closeModal: () => void;
 }
 
@@ -10,13 +11,21 @@ const WaitlistContext = createContext<WaitlistContextValue | null>(null);
 
 export function WaitlistProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   return (
     <WaitlistContext.Provider
       value={{
         isOpen,
-        openModal: () => setIsOpen(true),
-        closeModal: () => setIsOpen(false),
+        modalMessage,
+        openModal: (message = "") => {
+          setModalMessage(message);
+          setIsOpen(true);
+        },
+        closeModal: () => {
+          setIsOpen(false);
+          setModalMessage("");
+        },
       }}
     >
       {children}

@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     question: "How is Nooki different from Family Link?",
-    answer: "Family Link blocks apps and creates power struggles. Nooki uses incentives — tasks earn rewards, creating positive habits instead of resentment. No locks, no fights.",
+    answer: "While Family Link focuses on device restrictions, Nooki acts as an intelligent assistant. We help children learn time management and responsibility through automated chores and rewards, rather than just locking screens.",
   },
   {
     question: "Does this require any special setup?",

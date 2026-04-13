@@ -4,7 +4,6 @@ import { Hero } from "@/components/Hero";
 import { Problem } from "@/components/Problem";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Rewards } from "@/components/Rewards";
-import { Pricing } from "@/components/Pricing";
 import { FAQ } from "@/components/FAQ";
 import { FooterCTA } from "@/components/FooterCTA";
 
@@ -17,7 +16,6 @@ export function AIParentingLanding() {
         <Problem />
         <HowItWorks />
         <Rewards />
-        <Pricing />
         <FAQ />
       </main>
       <FooterCTA />
